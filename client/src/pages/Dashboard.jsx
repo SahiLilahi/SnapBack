@@ -4,7 +4,6 @@ import {
   CategoryScale,
   Chart as ChartJS,
   Legend,
-  LinearScale,
   Title,
   Tooltip,
 } from "chart.js";
@@ -33,7 +32,7 @@ function Dashboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/mockups/stats")
+      .get("https://snapback-5727.onrender.com/api/mockups/stats")
       .then((res) => setVoteData(res.data))
       .catch(() => alert("Error loading vote stats"));
   }, []);

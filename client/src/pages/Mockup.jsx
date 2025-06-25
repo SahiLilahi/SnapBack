@@ -9,7 +9,7 @@ function Mockup() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/mockups")
+      .get("https://snapback-5727.onrender.com/api/mockups")
       .then((res) => setMockups(res.data))
       .catch(() => alert("Failed to load mockups"));
   }, []);
@@ -26,7 +26,7 @@ function Mockup() {
       commentOverride !== null ? commentOverride : comments[mockup_id] || "";
 
     try {
-      await axios.post("http://localhost:5000/api/mockups/vote", {
+      await axios.post("https://snapback-5727.onrender.com/api/mockups/vote", {
         user_id,
         mockup_id,
         vote_value,
@@ -85,7 +85,9 @@ function Mockup() {
                 className="eye-icon"
                 title="View full image"
                 onClick={() =>
-                  setModalImage(`http://localhost:5000${mockup.image_url}`)
+                  setModalImage(
+                    `https://snapback-5727.onrender.com${mockup.image_url}`
+                  )
                 }
               >
                 👁️
@@ -93,7 +95,7 @@ function Mockup() {
             </div>
 
             <img
-              src={`http://localhost:5000${mockup.image_url}`}
+              src={`https://snapback-5727.onrender.com${mockup.image_url}`}
               alt={mockup.title}
               className="mockup-image"
             />

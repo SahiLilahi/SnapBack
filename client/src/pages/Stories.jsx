@@ -11,10 +11,10 @@ function Stories() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/mockups")
+      .get("https://snapback-5727.onrender.com/api/mockups")
       .then((res) => setMockups(res.data));
     axios
-      .get("http://localhost:5000/api/stories")
+      .get("https://snapback-5727.onrender.com/api/stories")
       .then((res) => setStoryList(res.data));
   }, [submitted]);
 
@@ -29,7 +29,7 @@ function Stories() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/stories", {
+      await axios.post("https://snapback-5727.onrender.com/api/stories", {
         user_id,
         mockup_id: selectedMockup,
         story_text: storyText,

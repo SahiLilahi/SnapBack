@@ -10,12 +10,12 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/mockups")
+      .get("https://snapback-5727.onrender.com/api/mockups")
       .then((res) => setMockups(res.data.slice(0, 3)))
       .catch(() => alert("Failed to load mockups"));
 
     axios
-      .get("http://localhost:5000/api/stories")
+      .get("https://snapback-5727.onrender.com/api/stories")
       .then((res) => setStories(res.data.slice(0, 3)))
       .catch(() => alert("Failed to load stories"));
   }, []);
@@ -57,7 +57,10 @@ function Home() {
         <div className="mockup-list">
           {mockups.map((m) => (
             <div className="mockup-card" key={m.id}>
-              <img src={`http://localhost:5000${m.image_url}`} alt={m.title} />
+              <img
+                src={`https://snapback-5727.onrender.com${m.image_url}`}
+                alt={m.title}
+              />
               <h3>{m.title}</h3>
               <p className="note">Login to vote or comment</p>
             </div>

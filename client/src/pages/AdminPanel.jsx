@@ -10,7 +10,7 @@ function AdminPanel() {
 
   const loadMockups = () => {
     axios
-      .get("http://localhost:5000/api/mockups")
+      .get("https://snapback-5727.onrender.com/api/mockups")
       .then((res) => setMockups(res.data))
       .catch(() => alert("Failed to load mockups"));
   };
@@ -39,9 +39,13 @@ function AdminPanel() {
         formData.append("image", file);
 
         axios
-          .post("http://localhost:5000/api/mockups/upload", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          })
+          .post(
+            "https://snapback-5727.onrender.com/api/mockups/upload",
+            formData,
+            {
+              headers: { "Content-Type": "multipart/form-data" },
+            }
+          )
           .then(() => {
             alert("Mockup updated with new image");
             resetForm();
@@ -50,7 +54,7 @@ function AdminPanel() {
           .catch(() => alert("Update failed"));
       } else {
         axios
-          .put(`http://localhost:5000/api/mockups/${form.id}`, {
+          .put(`https://snapback-5727.onrender.com/api/mockups/${form.id}`, {
             title: form.title,
             image_url: form.image_url,
           })
@@ -68,9 +72,13 @@ function AdminPanel() {
       formData.append("image", file);
 
       axios
-        .post("http://localhost:5000/api/mockups/upload", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
+        .post(
+          "https://snapback-5727.onrender.com/api/mockups/upload",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        )
         .then(() => {
           alert("Mockup added");
           resetForm();
@@ -93,7 +101,7 @@ function AdminPanel() {
   const handleDelete = (id) => {
     if (!window.confirm("Delete this mockup?")) return;
     axios
-      .delete(`http://localhost:5000/api/mockups/${id}`)
+      .delete(`https://snapback-5727.onrender.com/api/mockups/${id}`)
       .then(() => {
         alert("Mockup deleted");
         loadMockups();
@@ -130,7 +138,7 @@ function AdminPanel() {
             />
           ) : isEdit && form.image_url ? (
             <img
-              src={`http://localhost:5000${form.image_url}`}
+              src={`https://snapback-5727.onrender.com${form.image_url}`}
               alt="Current"
               className="mockup-image"
             />
@@ -153,7 +161,7 @@ function AdminPanel() {
               <p className="mockup-title">{m.title}</p>
               <p className="mockup-url">{m.image_url}</p>
               <img
-                src={`http://localhost:5000${m.image_url}`}
+                src={`https://snapback-5727.onrender.com${m.image_url}`}
                 alt={m.title}
                 className="mockup-image"
               />
