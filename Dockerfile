@@ -7,7 +7,7 @@ COPY client/package*.json ./
 RUN npm install
 
 COPY client/ .
-RUN npm start
+RUN npm run build
 
 
 # Stage 2: Set up Node.js server
@@ -25,8 +25,8 @@ COPY server ./server
 # Copy built React app from previous stage
 COPY --from=client-builder /app/client/build ./server/public
 
-# Expose port
+# Expose server port
 EXPOSE 5000
 
-# Run the server
+# Start the Node.js server
 CMD ["node", "server/server.js"]
